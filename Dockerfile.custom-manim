@@ -1,0 +1,7 @@
+from manimcommunity/manim
+
+USER root
+RUN apt-get update
+RUN apt-get install -y fonts-noto-cjk
+RUN fc-cache -fv
+RUN pip install --upgrade --no-cache manim-fonts

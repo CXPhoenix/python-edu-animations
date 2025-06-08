@@ -1,0 +1,13 @@
+# MACOSX
+.DS_Store
+
+# python
+__pycache__
+
+# uv
+uv.lock
+.venv
+
+# manim
+.cache
+media
