@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "ms-vscode.makefile-tools",
+        "rickaym.manim-sideview",
+        "ms-azuretools.vscode-docker"
+    ]
+}
