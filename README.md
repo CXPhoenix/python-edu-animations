@@ -3,13 +3,13 @@
 ![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=flat&logo=google%20gemini&logoColor=white)
 ![Python](https://img.shields.io/badge/python-with%20manim-3670A0?style=flat&logo=python&logoColor=ffdd54)
 
-## 簡介
+## ABSTRACT
 這個專案是利用 Manim 來製作一系列關於 Python 程式設計技巧的動畫影片。我們整合了 Google Gemini 2.5 Pro 作為輔助工具，用來生成動畫內容，並使用 Gemini 2.5 Pro preview TTS 功能來產生語音介紹，讓影片更具互動性和教育性。專案目標是為學習者提供視覺化且易懂的 Python 教學資源，涵蓋基礎技巧到進階應用。
 
-## 安裝與設定
+## INSTALLATION AND CONFIGURATIONS
 要運行這個專案，您需要先安裝必要的依賴項目。請確保您的系統符合以下要求：
 
-### 先決條件
+### REQUIREMENTS
 - Python 3.12.9（已設定於 .python-version 檔案）。
 - Manim 圖形庫（可透過 pip 安裝）。
 
@@ -18,12 +18,12 @@
 >
 > 這邊為了不麻煩，所以此專案預設使用 `Docker` 來處理影片產生問題。詳情可見此[說明](https://docs.manim.community/en/stable/installation/docker.html)
 >
-> 當然，此專案也十分適合使用 `Jupyter Notebook` 或是 `Google Colab` 使用。詳情請見此[說明](https://docs.manim.community/en/stable/installation/jupyter.html)
+> 當然，此專案也十分適合使用 `Jupyter Notebook` 或是 `Google Colab`。詳情請見此[說明](https://docs.manim.community/en/stable/installation/jupyter.html)
 
-### 安裝步驟
+### INSTALLATION
 1. 克隆這個儲存庫：
    ```
-   git clone https://github.com/your-repo-url.git  # 替換為實際儲存庫 URL
+   git clone https://github.com/CXPhoenix/python-edu-animations.git  # 替換為實際儲存庫 URL
    cd python_explain_video
    ```
 
@@ -41,7 +41,7 @@
    uv pip install manim  # 如果未包含在 requirements.txt
    ```
 
-## 使用方法
+## USAGE
 > [!WARNING]
 > 在開始前，請確保您已安裝 Docker 和 make。如果尚未安裝，請先執行以下命令：
 > - 安裝 make（如果您的系統未有）：在 macOS 上，使用 `brew install make`；在 Linux 上，使用適當的套件管理器。
@@ -73,7 +73,7 @@
 4. 觀看輸出：
    - 生成的影片會儲存在 `YOUR_PROJECT_NAME/media/` 目錄。您可以使用任何媒體播放器開啟檔案。
 
-## 貢獻
+## CONTRIBUTE
 歡迎大家貢獻！如果您想參與：
 - 提出問題或 Pull Request。
 - 新增更多 Python 技巧的場景。
@@ -81,7 +81,7 @@
 
 請遵守我們的程式碼規範，並在提交前測試您的變更。
 
-## 授權
+## LICENCE
 這個專案使用 Apache License 2.0 授權。詳情請見 LICENSE 檔案。
 
 ## 致謝
