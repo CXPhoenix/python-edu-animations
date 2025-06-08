@@ -1,4 +1,7 @@
 # Python 程式設計技巧系列
+![Docker](https://img.shields.io/badge/docker-custom%20image-8574bd.svg?style=flat&logo=docker&logoColor=white&labelColor=%230db7ed)
+![Google Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=flat&logo=google%20gemini&logoColor=white)
+![Python](https://img.shields.io/badge/python-with%20manim-3670A0?style=flat&logo=python&logoColor=ffdd54)
 
 ## 簡介
 這個專案是利用 Manim 來製作一系列關於 Python 程式設計技巧的動畫影片。我們整合了 Google Gemini 2.5 Pro 作為輔助工具，用來生成動畫內容，並使用 Gemini 2.5 Pro preview TTS 功能來產生語音介紹，讓影片更具互動性和教育性。專案目標是為學習者提供視覺化且易懂的 Python 教學資源，涵蓋基礎技巧到進階應用。
