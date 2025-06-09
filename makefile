@@ -40,7 +40,7 @@ endif
 MANIM_EXE ?= manim -q$(QUALITY_FLAG) $(MANIM_FILE_NAME).py $(MANIM_TARGET)
 FILES_TO_DELETE ?= $(HOST_DIR)/media/videos/$(MANIM_FILE_NAME)/$(QUALITY)/partial_movie_files
 
-
+# 編譯 image
 image_build:
 	@echo "現在將重新 build docker image..."
 	docker build -t $(IMAGE_NAME):$(IMAGE_VER) -f $(ROOT_DIR)$(DOCKERFILE_NAME) .
@@ -70,7 +70,7 @@ build:
 		exit 1; \
 	fi
 	@echo "正在啟動 Manim 容器..."
-	docker run --rm -v "$(HOST_DIR):$(CONTAINER_DIR)" $(IMAGE_NAME) $(MANIM_EXE)
+	docker run --rm -v "$(HOST_DIR):$(CONTAINER_DIR)" $(IMAGE_NAME):$(IMAGE_VER) $(MANIM_EXE)
 	@echo "Manim 製作完成。"
 	@echo "正在清理綁定掛載目錄下的檔案：$(FILES_TO_DELETE)..."
 	rm -rf $(FILES_TO_DELETE)
@@ -82,7 +82,7 @@ gif:
 		exit 1; \
 	fi
 	@echo "正在啟動 Manim 容器..."
-	docker run --rm -v "$(HOST_DIR):$(CONTAINER_DIR)" $(IMAGE_NAME) manim --format gif $(MANIM_FILE_NAME).py $(MANIM_TARGET)
+	docker run --rm -v "$(HOST_DIR):$(CONTAINER_DIR)" $(IMAGE_NAME):$(IMAGE_VER) manim --format gif $(MANIM_FILE_NAME).py $(MANIM_TARGET)
 	@echo "Manim 製作完成。"
 	@echo "正在清理綁定掛載目錄下的檔案：$(FILES_TO_DELETE)..."
 	rm -rf $(FILES_TO_DELETE)
@@ -90,7 +90,7 @@ gif:
 
 instructs:
 	@echo "查詢 Manim 指令集"
-	docker run --rm $(IMAGE_NAME) manim $(MANIM_COMMAND) --help
+	docker run --rm $(IMAGE_NAME):$(IMAGE_VER) manim $(MANIM_COMMAND) --help
 
 # 目標：顯示幫助訊息
 help:
