@@ -1,4 +1,5 @@
 from manim import *
+from manim_data_structures import *
 from typing import Optional, Callable, Any
 from enum import IntEnum
 from functools import wraps
@@ -92,11 +93,12 @@ def scene2(scene: Scene):
   scene.add_sound("audio/intro.wav")
   scene.wait(6) # 等剛好唸到
   scene.play(Write(line1))
-  scene.wait(4)
+  scene.wait(8)
 
   scene.remove(line1)
 
   img1 = ImageMobject('images/scene1-1.png')
   scene.add(img1)
+  scene.wait(3)
 
 OutputScene = scene_setter.output_scene

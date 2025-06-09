@@ -5,6 +5,7 @@ requires-python = ">=3.12"
 readme = "README.md"
 dependencies = [
     "manim>=0.19.0",
+    "manim-data-structures>=0.1.7",
 ]
 
 [tool.uv.workspace]

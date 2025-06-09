@@ -4,4 +4,11 @@ USER root
 RUN apt-get update
 RUN apt-get install -y fonts-noto-cjk
 RUN fc-cache -fv
-RUN pip install --upgrade --no-cache manim-fonts manim-data-structures
+RUN pip install uv
+
+RUN uv python install 3.12.9
+
+COPY requirements.txt .
+RUN uv pip install -r requirements.txt --system
+
+COPY --chown=manimuser manim_data_structures.fixed /usr/local/lib/python3.11/site-packages/manim_data_structures
