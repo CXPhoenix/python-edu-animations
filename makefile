@@ -6,6 +6,8 @@ default: help
 
 # 執行 Manim 相關變數
 IMAGE_NAME ?= custom-manim
+IMAGE_VER ?= latest
+DOCKERFILE_NAME ?= Dockerfile.custom-manim
 ROOT_DIR ?= $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 HOST_DIR ?= $(ROOT_DIR)$(PROJECT_NAME)
 CONTAINER_DIR ?= /manim
@@ -37,6 +39,12 @@ endif
 
 MANIM_EXE ?= manim -q$(QUALITY_FLAG) $(MANIM_FILE_NAME).py $(MANIM_TARGET)
 FILES_TO_DELETE ?= $(HOST_DIR)/media/videos/$(MANIM_FILE_NAME)/$(QUALITY)/partial_movie_files
+
+
+image_build:
+	@echo "現在將重新 build docker image..."
+	docker build -t $(IMAGE_NAME):$(IMAGE_VER) -f $(ROOT_DIR)$(DOCKERFILE_NAME) .
+	@echo "編譯 $(IMAGE_NAME):$(IMAGE_VER) 完成！"
 
 # 目標：新增一個新的影片專案資料夾
 create:
@@ -89,8 +97,9 @@ help:
 	@echo "可用命令："
 	@echo "  make help					- 顯示此幫助訊息。"
 	@echo "	---------- ******** make TARGET ******** ----------"
-	@echo "  make instructs [MANIM_COMMAND=MANIM_COMMAND]	- 查詢 manim 相關指令。"
-	@echo "  make create PROJECT_NAME=YOUR_PROJECT_NAME	- 建立新的 Manim 影片專案。"
-	@echo "  make build PROJECT_NAME=YOUR_PROJECT_NAME   	- 啟動 Manim Container 製作影片，並在結束後清理暫存的 Frames。"
-	@echo "  make gif PROJECT_NAME=YOUR_PROJECT_NAME   	- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
+	@echo "  make instructs [MANIM_COMMAND=MANIM_COMMAND]			- 查詢 manim 相關指令。"
+	@echo "  make create PROJECT_NAME=YOUR_PROJECT_NAME			- 建立新的 Manim 影片專案。"
+	@echo "  make build PROJECT_NAME=YOUR_PROJECT_NAME   			- 啟動 Manim Container 製作影片，並在結束後清理暫存的 Frames。"
+	@echo "  make gif PROJECT_NAME=YOUR_PROJECT_NAME   			- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
+	@echo "  make image_build [IMAGE_VER=IMAGE_VER (Default: latest)]   	- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
 
