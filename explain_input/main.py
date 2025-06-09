@@ -72,7 +72,7 @@ def scene1(scene: Scene):
   author = Text("CXPh03n1x | 陳晉 @ FHSH").next_to(subtitle, DOWN*2.5)
   begin_group = VGroup(title, subtitle, author)
   
-  scene.add_sound("audios/begin.wav")
+  scene.add_sound("audio/begin.wav")
   scene.play(Write(title))
   scene.play(FadeIn(subtitle, shift=UP))
   scene.play(FadeIn(author))
@@ -89,8 +89,7 @@ def scene2(scene: Scene):
   line1 = VGroup(t1, t2).shift(LEFT*3)
 
   scene.wait(1)
-  logger.info("加入 audios/intro.wav")
-  scene.add_sound("audios/intro.wav")
+  scene.add_sound("audio/intro.wav")
   scene.wait(6) # 等剛好唸到
   scene.play(Write(line1))
   scene.wait(4)

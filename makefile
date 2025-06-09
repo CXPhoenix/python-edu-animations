@@ -68,12 +68,29 @@ build:
 	rm -rf $(FILES_TO_DELETE)
 	@echo "清理完成。"
 
+gif:
+	@if [ -z "$(PROJECT_NAME)" ]; then \
+		echo "Error: Environment variable PROJECT_NAME is not set or is empty."; \
+		exit 1; \
+	fi
+	@echo "正在啟動 Manim 容器..."
+	docker run --rm -v "$(HOST_DIR):$(CONTAINER_DIR)" $(IMAGE_NAME) manim --format gif $(MANIM_FILE_NAME).py $(MANIM_TARGET)
+	@echo "Manim 製作完成。"
+	@echo "正在清理綁定掛載目錄下的檔案：$(FILES_TO_DELETE)..."
+	rm -rf $(FILES_TO_DELETE)
+	@echo "清理完成。"
+
+instructs:
+	@echo "查詢 Manim 指令集"
+	docker run --rm $(IMAGE_NAME) manim $(MANIM_COMMAND) --help
 
 # 目標：顯示幫助訊息
 help:
 	@echo "可用命令："
 	@echo "  make help					- 顯示此幫助訊息。"
 	@echo "	---------- ******** make TARGET ******** ----------"
+	@echo "  make instructs [MANIM_COMMAND=MANIM_COMMAND]	- 查詢 manim 相關指令。"
 	@echo "  make create PROJECT_NAME=YOUR_PROJECT_NAME	- 建立新的 Manim 影片專案。"
-	@echo "  make build PROJECT_NAME=YOUR_PROJECT_NAME   	- 啟動 Docker 容器，並在結束後清理指定檔案。"
+	@echo "  make build PROJECT_NAME=YOUR_PROJECT_NAME   	- 啟動 Manim Container 製作影片，並在結束後清理暫存的 Frames。"
+	@echo "  make gif PROJECT_NAME=YOUR_PROJECT_NAME   	- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
 
