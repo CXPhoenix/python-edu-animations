@@ -37,7 +37,11 @@ else
 	endif
 endif
 
+SAVE_SECTION ?= 
 MANIM_EXE ?= manim -q$(QUALITY_FLAG) $(MANIM_FILE_NAME).py $(MANIM_TARGET)
+ifdef SAVE_SECTION
+	MANIM_EXE = manim -q$(QUALITY_FLAG) --save_sections $(MANIM_FILE_NAME).py $(MANIM_TARGET)
+endif
 FILES_TO_DELETE ?= $(HOST_DIR)/media/videos/$(MANIM_FILE_NAME)/$(QUALITY)/partial_movie_files
 
 # 編譯 image
@@ -95,11 +99,13 @@ instructs:
 # 目標：顯示幫助訊息
 help:
 	@echo "可用命令："
-	@echo "  make help					- 顯示此幫助訊息。"
-	@echo "	---------- ******** make TARGET ******** ----------"
-	@echo "  make create PROJECT_NAME=YOUR_PROJECT_NAME						- 建立新的 Manim 影片專案。"
-	@echo "  make instructs [MANIM_COMMAND=MANIM_COMMAND] [IMAGE_VER=IMAGE_VER (Default: latest)]	- 查詢 manim 相關指令。"
-	@echo "  make build PROJECT_NAME=YOUR_PROJECT_NAME [IMAGE_VER=IMAGE_VER (Default: latest)]  	- 啟動 Manim Container 製作影片，並在結束後清理暫存的 Frames。"
-	@echo "  make gif PROJECT_NAME=YOUR_PROJECT_NAME [IMAGE_VER=IMAGE_VER (Default: latest)]   	- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
-	@echo "  make image_build [IMAGE_VER=IMAGE_VER (Default: latest)]   				- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
+	@echo "    help							- 顯示此幫助訊息。"
+	@echo "    create PROJECT_NAME=YOUR_PROJECT_NAME			- 建立新的 Manim 影片專案。"
+	@echo "    instructs [MANIM_COMMAND=MANIM_COMMAND] [IMAGE_VER=IMAGE_VER (Default: latest)]"
+	@echo "								- 查詢 manim 相關指令。"
+	@echo "    build PROJECT_NAME=YOUR_PROJECT_NAME [IMAGE_VER=IMAGE_VER (Default: latest)] [SAVE_SECTION]"
+	@echo "								- 啟動 Manim Container 製作影片，並在結束後清理暫存的 Frames。"
+	@echo "    gif PROJECT_NAME=YOUR_PROJECT_NAME [IMAGE_VER=IMAGE_VER (Default: latest)]"
+	@echo "								- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
+	@echo "    image_build [IMAGE_VER=IMAGE_VER (Default: latest)]   	- 啟動 Manim Container 製作 GIF，並在結束後清理暫存的 Frames。"
 
